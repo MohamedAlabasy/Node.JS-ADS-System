@@ -6,8 +6,8 @@ const newUser = new UserModels()
 // #=======================================================================================#
 // #			                            Register                                       #
 // #=======================================================================================#
-export const create = async (request: Request, response: Response, next: NextFunction) => {
-    await newUser.create(request)
+export const register = async (request: Request, response: Response, next: NextFunction) => {
+    await newUser.register(request)
         .then(userData => {
             response.json({
                 status: 1,

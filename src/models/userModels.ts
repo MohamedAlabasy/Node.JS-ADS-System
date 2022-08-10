@@ -22,7 +22,7 @@ export class UserModels {
     // #=======================================================================================#
     // #			                              create                                       #
     // #=======================================================================================#
-    async create(request: Request): Promise<users> {
+    async register(request: Request): Promise<users> {
         try {
             const hashPassword = bcrypt.hashSync(request.body.password, 10);
             const sqlQuery = 'INSERT INTO users (email,first_name, last_name, password,is_owner,is_verification,token) VALUES($1, $2, $3, $4, $5, FALSE, null) RETURNING *'
