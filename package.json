@@ -16,5 +16,8 @@
   "bugs": {
     "url": "https://github.com/MohamedAlabasy/Node.JS-ADS-System/issues"
   },
-  "homepage": "https://github.com/MohamedAlabasy/Node.JS-ADS-System#readme"
+  "homepage": "https://github.com/MohamedAlabasy/Node.JS-ADS-System#readme",
+  "devDependencies": {
+    "typescript": "^4.7.4"
+  }
 }
