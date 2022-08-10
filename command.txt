@@ -77,3 +77,8 @@ npm i -D @types/pg
 # install db-migrate
 npm i -D db-migrate
 yarn add db-migrate db-migrate-pg
+
+
+db-migrate create name-of-table --sql-file
+db-migrate up
+db-migrate down
