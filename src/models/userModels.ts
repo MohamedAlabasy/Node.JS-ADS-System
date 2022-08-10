@@ -4,6 +4,7 @@ import { Request } from 'express';
 
 import Client from '../database';
 
+import validateRequest from '../utilities/validateRequest';
 
 
 export type users = {
@@ -23,6 +24,7 @@ export class UserModels {
     // #			                              create                                       #
     // #=======================================================================================#
     async register(request: Request): Promise<users> {
+        validateRequest(request);
         try {
             const hashPassword = bcrypt.hashSync(request.body.password, 10);
             const sqlQuery = 'INSERT INTO users (email,first_name, last_name, password,is_owner,is_verification,token) VALUES($1, $2, $3, $4, $5, FALSE, null) RETURNING *'
@@ -40,6 +42,7 @@ export class UserModels {
     // #			                            login                                          #
     // #=======================================================================================#
     async login(request: Request): Promise<users> {
+        validateRequest(request);
         try {
             let sqlQuery = 'SELECT * FROM users WHERE email=($1)'
             const DBConnection = await Client.connect()
@@ -72,6 +75,7 @@ export class UserModels {
     // #			                       get User by id                                      #
     // #=======================================================================================#
     async show(request: Request): Promise<users> {
+        validateRequest(request);
         try {
             let sqlQuery = 'SELECT * FROM users WHERE id=($1)'
             const DBConnection = await Client.connect()
@@ -93,6 +97,7 @@ export class UserModels {
     // #			                               logout                                      #
     // #=======================================================================================#
     async logout(request: Request): Promise<users> {
+        validateRequest(request);
         try {
             let sqlQuery = 'UPDATE users SET token = null WHERE id=($1)'
             const DBConnection = await Client.connect()
