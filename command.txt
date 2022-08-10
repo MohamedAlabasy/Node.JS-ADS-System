@@ -1,0 +1,78 @@
+user (-D) for (--save-dev)
+
+# initialize the project
+npm init -y 
+
+
+# install TS 
+npm i -D typescript
+npx tsc --init 
+
+
+# install EsLine
+npm i -D eslint
+npx eslint --init
+
+
+# install prettier
+npm i -D prettier
+npm i -D eslint-config-prettier eslint-plugin-prettier 
+ 
+
+# install jasmine
+npm i -D jasmine 
+npm i -D jasmine-spec-reporter
+npm i -D @types/jasmine
+
+
+# install express
+npm i express --save
+npm i -D @types/express
+
+
+# install node monitor
+npm i -D nodemon
+npm i -D ts-node
+
+
+# install dotenv
+npm i dotenv 
+
+
+# install morgan
+npm i -D morgan 
+npm i -D @types/morgan
+
+
+# install express-validator
+npm i express-validator
+
+
+# install body-parser
+npm i body-parser --save
+npm i -D @types/body-parser
+
+
+# install bcryptjs
+npm i bcryptjs --save
+npm i -D @types/bcryptjs
+
+
+# install jsonwebtoken 
+npm i jsonwebtoken  --save
+npm i -D @types/jsonwebtoken 
+
+
+# install cors
+npm i cors --save   
+npm i -D @types/cors
+
+ 
+# install pg
+npm i pg    
+npm i -D  @types/pg
+
+
+# install db-migrate
+npm i -D db-migrate
+yarn add db-migrate db-migrate-pg
