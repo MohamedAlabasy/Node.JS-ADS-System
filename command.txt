@@ -1,12 +1,12 @@
 user (-D) for (--save-dev)
 
 # initialize the project
-npm init -y 
+npm init -y
 
 
 # install TS 
 npm i -D typescript
-npx tsc --init 
+npx tsc --init
 
 
 # install EsLine
@@ -20,7 +20,7 @@ npm i -D eslint-config-prettier eslint-plugin-prettier
  
 
 # install jasmine
-npm i -D jasmine 
+npm i -D jasmine
 npm i -D jasmine-spec-reporter
 npm i -D @types/jasmine
 
@@ -36,11 +36,12 @@ npm i -D ts-node
 
 
 # install dotenv
-npm i dotenv 
+npm i dotenv
 
 
 # install morgan
-c
+npm i -D morgan
+npm i -D @types/morgan
 
 
 # install express-validator
@@ -58,18 +59,18 @@ npm i -D @types/bcryptjs
 
 
 # install jsonwebtoken 
-npm i jsonwebtoken  --save
-npm i -D @types/jsonwebtoken 
+npm i jsonwebtoken --save
+npm i -D @types/jsonwebtoken
 
 
 # install cors
-npm i cors --save   
+npm i cors --save
 npm i -D @types/cors
 
  
 # install pg
-npm i pg    
-npm i -D  @types/pg
+npm i pg
+npm i -D @types/pg
 
 
 # install db-migrate
