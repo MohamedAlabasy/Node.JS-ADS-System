@@ -68,7 +68,11 @@ npm i cors --save
 npm i -D @types/cors
 
 
- 
+# install nodemailer
+npm i nodemailer   
+npm i -D  @types/nodemailer
+
+
 # install pg
 npm i pg
 npm i -D @types/pg
