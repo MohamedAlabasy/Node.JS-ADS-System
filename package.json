@@ -1,0 +1,20 @@
+{
+  "name": "node.js-ads-system",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/MohamedAlabasy/Node.JS-ADS-System.git"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/MohamedAlabasy/Node.JS-ADS-System/issues"
+  },
+  "homepage": "https://github.com/MohamedAlabasy/Node.JS-ADS-System#readme"
+}
