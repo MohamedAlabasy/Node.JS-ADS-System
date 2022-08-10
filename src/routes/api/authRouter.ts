@@ -1,7 +1,6 @@
 import { Router } from 'express';
 import { body, param } from 'express-validator';
 
-
 import {
     login,
     register,
@@ -16,7 +15,7 @@ const auth: Router = Router()
 auth.post('/login', checkEmailAndPassword(), login);
 auth.post('/register', checkEmailAndPassword(), checkUserName(), register);
 auth.get('/show/:id', checkTokens, checkID(), show);
-auth.post('/logout/:id', checkTokens, checkID(), logout);
+auth.get('/logout/:id', checkTokens, checkID(), logout);
 
 // #=======================================================================================#
 // #			                         check function                                    #
