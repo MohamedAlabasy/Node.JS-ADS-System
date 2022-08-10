@@ -136,3 +136,7 @@ dist
 
 # except avatar image
 !avatar.png
+
+
+# database.json
+database.json
