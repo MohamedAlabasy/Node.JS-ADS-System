@@ -18,6 +18,7 @@
   },
   "homepage": "https://github.com/MohamedAlabasy/Node.JS-ADS-System#readme",
   "devDependencies": {
+    "@types/bcryptjs": "^2.4.2",
     "@types/body-parser": "^1.19.2",
     "@types/express": "^4.17.13",
     "@types/jasmine": "^4.0.3",
@@ -36,6 +37,7 @@
     "typescript": "^4.7.4"
   },
   "dependencies": {
+    "bcryptjs": "^2.4.3",
     "body-parser": "^1.20.0",
     "dotenv": "^16.0.1",
     "express": "^4.18.1",
