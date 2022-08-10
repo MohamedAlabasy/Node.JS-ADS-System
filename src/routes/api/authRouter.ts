@@ -8,14 +8,15 @@ import {
     show,
     logout
 } from '../../controllers/authController'
+import checkTokens from '../../utilities/checkTokens';
 
 
 const auth: Router = Router()
 
 auth.post('/login', checkEmailAndPassword(), login);
 auth.post('/register', checkEmailAndPassword(), checkUserName(), register);
-auth.get('/show/:id', checkID(), show);
-auth.post('/logout/:id', checkID(), logout);
+auth.get('/show/:id', checkTokens, checkID(), show);
+auth.post('/logout/:id', checkTokens, checkID(), logout);
 
 // #=======================================================================================#
 // #			                         check function                                    #
