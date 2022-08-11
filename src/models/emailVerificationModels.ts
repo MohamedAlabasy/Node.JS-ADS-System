@@ -23,8 +23,8 @@ export class EmailVerificationModels {
         try {
             let sqlQuery = 'SELECT * FROM email_verification WHERE user_id=($1)'
             const DBConnection = await Client.connect()
-            let result = await DBConnection.query(sqlQuery, [request.body.user])
-            let date = result.rows[0]
+            const result = await DBConnection.query(sqlQuery, [request.body.user])
+            const date = result.rows[0]
 
             console.log(date);
 

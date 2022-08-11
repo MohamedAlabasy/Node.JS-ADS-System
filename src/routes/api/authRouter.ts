@@ -5,6 +5,8 @@ import {
     login,
     register,
     activateUserEmail,
+    sendEmailCodeToRestPassword,
+    resetUserPassword,
     show,
     logout
 } from '../../controllers/authController'
@@ -17,6 +19,8 @@ auth.post('/login', checkEmail(), checkPassword(), login);
 auth.post('/register', checkEmail(), checkPassword(), checkUserName(), register);
 auth.get('/show/:id', checkTokens, checkID(), show);
 auth.post('/activate', checkTokens, checkCode(), activateUserEmail);
+auth.post('/checkEmail', checkTokens, checkEmail(), sendEmailCodeToRestPassword);
+auth.post('/resetPassword', checkTokens, checkCode(), checkPassword(), resetUserPassword);
 auth.get('/logout/:id', checkTokens, checkID(), logout);
 
 // #=======================================================================================#

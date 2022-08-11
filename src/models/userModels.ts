@@ -18,16 +18,14 @@ export type users = {
     token: string
 }
 
-const expireCodeTime = 3600000;
 export class UserModels {
     // #=======================================================================================#
     // #			                            register                                       #
     // #=======================================================================================#
     async register(request: Request): Promise<users> {
         validateRequest(request);
-        const registerCode = code()
-        const hashPassword = bcrypt.hashSync(request.body.password, 10);
         try {
+            const hashPassword = bcrypt.hashSync(request.body.password, 10);
             let sqlQuery = 'INSERT INTO users (email,first_name, last_name, password,is_owner,is_verification,token) VALUES($1, $2, $3, $4, $5, FALSE, null) RETURNING *'
             const DBConnection = await Client.connect()
             let result = await DBConnection.query(sqlQuery, [request.body.email.toLocaleLowerCase(), request.body.first_name, request.body.last_name, hashPassword, request.body.is_owner || 'FALSE'])
@@ -35,6 +33,8 @@ export class UserModels {
 
             // use create and wanna send email code
             if (user) {
+                const registerCode = Math.floor(100000 + Math.random() * 900000);
+                const expireCodeTime = 3600000;
                 sqlQuery = 'INSERT INTO email_verification (code,created_at, expire_at, user_id) VALUES($1, $2, $3, $4) RETURNING *'
                 result = await DBConnection.query(sqlQuery, [registerCode, new Date(Date.now()), new Date(Date.now() + expireCodeTime), user.id])
                 console.log(result.rows[0]);
