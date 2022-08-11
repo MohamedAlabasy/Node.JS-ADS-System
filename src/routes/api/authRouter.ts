@@ -4,6 +4,7 @@ import { body, param } from 'express-validator';
 import {
     login,
     register,
+    activateUserEmail,
     show,
     logout
 } from '../../controllers/authController'
@@ -12,9 +13,10 @@ import checkTokens from '../../utilities/checkTokens';
 
 const auth: Router = Router()
 
-auth.post('/login', checkEmailAndPassword(), login);
-auth.post('/register', checkEmailAndPassword(), checkUserName(), register);
+auth.post('/login', checkEmail(), checkPassword(), login);
+auth.post('/register', checkEmail(), checkPassword(), checkUserName(), register);
 auth.get('/show/:id', checkTokens, checkID(), show);
+auth.post('/activate', checkTokens, checkCode(), activateUserEmail);
 auth.get('/logout/:id', checkTokens, checkID(), logout);
 
 // #=======================================================================================#
@@ -26,15 +28,28 @@ function checkID() {
         param("id").exists().withMessage('you must enter user id').isInt().withMessage('invalid user id')
     ]
 }
+function checkCode() {
+    return [
+        body('code').exists().withMessage('you must enter code')
+            .isInt().withMessage('code must be integer')
+            .isLength({ min: 6, max: 6 }).withMessage('code must consist of 6 numbers')
+    ]
+}
 
-function checkEmailAndPassword() {
+
+function checkEmail() {
     return [
         body('email')
             .exists().withMessage('you must enter email')
-            .isEmail().withMessage('invalid email'),
+            .isEmail().withMessage('invalid email')
+    ]
+}
+
+function checkPassword() {
+    return [
         body('password')
             .exists().withMessage('you must enter password')
-            .isStrongPassword().withMessage('Password Must contain at least 1 characters(upper and lower),numbers,special characters'),
+            .isStrongPassword().withMessage('Password Must contain at least 1 characters(upper and lower),numbers,special characters')
     ]
 }
 

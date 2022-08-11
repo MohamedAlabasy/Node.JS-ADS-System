@@ -23,10 +23,10 @@ export default function emailVerification(request: Request, code: number, isRese
 
     // setup email data with unicode symbols
     let mailOptions = {
-        from: '"TODO List" <mo7amed.el3basy@gmail.com>', // sender address
+        from: '"ADS System" <mo7amed.el3basy@gmail.com>', // sender address
         to: request.body.email, // list of receivers
-        subject: 'TODO Verification Request', // Subject line
-        text: 'TODO List', // plain text body
+        subject: 'ADS System Verification Request', // Subject line
+        text: 'ADS System', // plain text body
         html: EmailMessagesDesign(request.body.name, code, isResetPassword) // html body
     };
 
