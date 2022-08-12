@@ -12,15 +12,10 @@ const checkTokens = (request: Request | any, response: Response, next: NextFunct
     }
     try {
         jwt.verify(token, process.env.ACCESS_TOKEN_SECRET as string, (err: any, decoded: any) => {
-            if (!decoded.is_verification) {
-                throw new Error('You must verification email first')
-            }
-            
             if (err) {
-                console.log(err);
-                let error = new Error('invalid token');
-                // error.status = 403;
-                throw error;
+                throw new Error('invalid token');
+            } else if (!decoded.is_verification) {
+                throw new Error('You must verification email first')
             } else {
                 request.user = decoded;
                 next();

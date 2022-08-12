@@ -1,4 +1,9 @@
 import { Request } from 'express';
+import { createClient } from 'redis';
+
+const redisClient = createClient();
+redisClient.connect();
+
 
 import Client from '../database';
 
@@ -120,12 +125,19 @@ export class AdsModels {
     // #=======================================================================================#
     // #			                           ADS search                                      #
     // #=======================================================================================#
-    async adsSearch(request: Request): Promise<ads[]> {
+    async adsSearch(request: Request): Promise<any[]>{
         validateRequest(request);
         try {
             let result;
             let sqlQuery;
             const DBConnection = await Client.connect()
+
+
+            const redisValue = await redisClient.get(Object.values(request.body).sort().join(','))
+            if (redisValue) {
+                return JSON.parse(redisValue);
+            }
+
 
             if (Object.keys(request.body).length > 0) {
                 let condition = '';
@@ -141,7 +153,6 @@ export class AdsModels {
                     }
                     condition += `${index == 0 ? '' : 'and'} ${Object.keys(request.body)[index]}${operator}($${index + 1}) `
                 }
-                console.log(condition);
 
                 sqlQuery = `SELECT * FROM ads WHERE ${condition}`
                 result = await DBConnection.query(sqlQuery, Object.values(request.body))
@@ -166,6 +177,9 @@ export class AdsModels {
                 })
             }
 
+            await redisClient.setEx(Object.values(request.body).sort().join(','), 3600, JSON.stringify(ads));
+
+            // await redisClient.disconnect();
             DBConnection.release()
             return ads
         } catch (error) {
