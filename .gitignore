@@ -134,8 +134,9 @@ dist
 *.jpg
 *.jpeg
 
-# images
+# video
 *.mp4
+*.mkv
 
 
 # except avatar image
