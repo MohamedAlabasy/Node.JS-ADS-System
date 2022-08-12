@@ -61,11 +61,43 @@ export const getAdsByID = async (request: Request, response: Response, next: Nex
             next(error)
         })
 }
+
 // #=======================================================================================#
 // #			                          get All ADS                                      #
 // #=======================================================================================#
 export const getAllADS = async (request: Request, response: Response, next: NextFunction) => {
     await ads.getAllADS(request)
+        .then(adsData => {
+            response.json({
+                status: 1,
+                count: adsData.length,
+                data: adsData.map((ads) => {
+                    return (ads.msg) ? {
+                        id: ads.id,
+                        msg: ads.msg
+                    } : {
+                        id: ads.id,
+                        ads: ads.ads,
+                        ads_type: ads.ads.split('.').pop() === ('png' || 'jpg' || 'jpeg') ? 'image' : 'video',
+                        views_number: ads.views,
+                        device_type: ads.device_type,
+                        ads_place: ads.ads_place,
+                        start_date: ads.start_date,
+                        end_date: ads.end_date,
+                        user_id: ads.user_id,
+                    }
+                })
+            })
+        }).catch(error => {
+            next(error)
+        })
+}
+
+// #=======================================================================================#
+// #			                           ADS search                                      #
+// #=======================================================================================#
+export const adsSearch = async (request: Request, response: Response, next: NextFunction) => {
+    await ads.adsSearch(request)
         .then(adsData => {
             response.json({
                 status: 1,

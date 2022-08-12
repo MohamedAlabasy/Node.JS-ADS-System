@@ -58,8 +58,6 @@ export class AdsModels {
             const result = await DBConnection.query(sqlQuery, [request.params.id])
             let ads = result.rows[0]
 
-
-
             if (!ads) {
                 throw new Error(`No ADS with this id = ${request.params.id}`)
             } else if (new Date() >= ads.end_date) {
@@ -89,6 +87,52 @@ export class AdsModels {
             const ads = result.rows;
 
 
+            if (!ads) {
+                throw new Error('No ADS to show')
+            } else {
+                ads.map(async singleADS => {
+                    if (new Date() >= singleADS.end_date) {
+                        singleADS.msg = 'this ADS is expire date'
+                    } else {
+                        sqlQuery = 'UPDATE ads SET views = ($1) WHERE id=($2)'
+                        await DBConnection.query(sqlQuery, [singleADS.views + 1, singleADS.id]);
+                        singleADS.views = singleADS.views + 1;
+                    }
+                })
+            }
+
+            DBConnection.release()
+            return ads
+        } catch (error) {
+            throw new Error(error + '')
+        }
+    }
+    // #=======================================================================================#
+    // #			                           ADS search                                      #
+    // #=======================================================================================#
+    async adsSearch(request: Request): Promise<ads[]> {
+        validateRequest(request);
+        try {
+            let result;
+            let sqlQuery;
+            const DBConnection = await Client.connect()
+
+            if (Object.keys(request.body).length > 0) {
+                let condition = '';
+
+                for (let index = 0; index < Object.keys(request.body).length; index++) {
+                    condition += `${index == 0 ? '' : 'and'} ${Object.keys(request.body)[index]}=($${index + 1}) `
+                }
+
+                sqlQuery = `SELECT * FROM ads WHERE ${condition}`
+                result = await DBConnection.query(sqlQuery, Object.values(request.body))
+            } else {
+                sqlQuery = `SELECT * FROM ads`
+                result = await DBConnection.query(sqlQuery);
+            }
+
+            const ads = result.rows;
+            
             if (!ads) {
                 throw new Error('No ADS to show')
             } else {
