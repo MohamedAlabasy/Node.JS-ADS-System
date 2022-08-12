@@ -18,6 +18,8 @@ git clone https://github.com/MohamedAlabasy/Node.JS-ADS-System.git
 ```
 npm i
 ```
+`Step 3` : open pgadmin then create a data base called `ads_system`
+
 
 <h3 align="center">To help you understand the project</h3>
 
@@ -78,14 +80,14 @@ npm i
    <img src="https://user-images.githubusercontent.com/93389016/184259712-ee831772-eef4-4779-86e4-0306a012b717.jpg" alt="Build Status">
 </p>
 
-`Step 3` : To run project
+`Step 4` : To run project
 
 ```
 node run start
 ```
 
 
-`Step 4` : Open [postman](https://www.postman.com/downloads/) and import : [API Collation](https://github.com/MohamedAlabasy/Node.JS-ADS-System/blob/main/api_collection.json) You will find it in the project file.
+`Step 5` : Open [postman](https://www.postman.com/downloads/) and import : [API Collation](https://github.com/MohamedAlabasy/Node.JS-ADS-System/blob/main/api_collection.json) You will find it in the project file.
 
 ### After completing the registration as a new user, you must go to your email to confirm the email through the code sent to you
 
