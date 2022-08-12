@@ -73,6 +73,11 @@ npm i nodemailer
 npm i -D  @types/nodemailer
 
 
+# install multer
+npm i multer
+npm i -D  @types/multer
+
+
 # install pg
 npm i pg
 npm i -D @types/pg
