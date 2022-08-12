@@ -84,9 +84,8 @@ npm i
 node run start
 ```
 
-`Step 4` : Open the browser and click : [http://localhost:8080](http://localhost:8080)
 
-`Step 5` : Open [postman](https://www.postman.com/downloads/) and import : [API Collation](https://github.com/MohamedAlabasy/Node.JS-ADS-System/blob/main/api_collection.json) You will find it in the project file.
+`Step 4` : Open [postman](https://www.postman.com/downloads/) and import : [API Collation](https://github.com/MohamedAlabasy/Node.JS-ADS-System/blob/main/api_collection.json) You will find it in the project file.
 
 ### After completing the registration as a new user, you must go to your email to confirm the email through the code sent to you
 
