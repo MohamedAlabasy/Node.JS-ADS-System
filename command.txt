@@ -78,6 +78,11 @@ npm i multer
 npm i -D  @types/multer
 
 
+# install redis
+npm i redis --save
+npm i -D  @types/redis
+
+
 # install pg
 npm i pg
 npm i -D @types/pg

@@ -8,8 +8,8 @@ import checkTokens from '../../utilities/checkTokens';
 const ads: Router = Router()
 
 ads.post('', checkTokens, checkADSData(), create)
-ads.get('/:id', checkTokens, checkID(), getAdsByID)
 ads.get('', checkTokens, getAllADS)
+ads.get('/:id', checkTokens, checkID(), getAdsByID)
 ads.post('/search', checkTokens, checkSearchData(), adsSearch)
 
 

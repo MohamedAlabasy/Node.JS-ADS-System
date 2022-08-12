@@ -27,18 +27,28 @@ export class AdsModels {
             const end_date = new Date(request.body.end_date)
 
             if (request.file?.filename.split('.').pop() !== ('mp4' || 'png' || 'jpg' || 'jpeg' || 'mkv' || 'mp4')) {
-                console.log(request.file?.filename.split('.').pop() === 'mp4');
                 throw new Error('ads extensions must be one of png or jpg or jpeg for images and one of mkv or mp4 for video')
             }
             if (end_date <= start_date) {
                 throw new Error('The ADS end_date must be greater than the ADS start_date')
             }
 
-
-            let sqlQuery = 'INSERT INTO ads (ads, device_type, ads_place,start_date,end_date,user_id) VALUES($1, $2, $3, $4, $5, $6) RETURNING *'
+            let sqlQuery = 'SELECT * FROM users WHERE id=($1)'
             const DBConnection = await Client.connect()
-            const result = await DBConnection.query(sqlQuery, [request.file?.filename, request.body.device_type, request.body.ads_place, request.body.start_date, request.body.end_date, request.body.user_id])
-            const ads = result.rows[0]
+            let result = await DBConnection.query(sqlQuery, [request.body.user_id])
+            let ads = result.rows[0]
+
+            if (!ads) {
+                throw new Error('No user with this id')
+            }
+            if (!ads.is_owner) {
+                throw new Error('Only the owner can add ads')
+            }
+
+
+            sqlQuery = 'INSERT INTO ads (ads, device_type, ads_place,start_date,end_date,user_id) VALUES($1, $2, $3, $4, $5, $6) RETURNING *'
+            result = await DBConnection.query(sqlQuery, [request.file?.filename, request.body.device_type, request.body.ads_place, request.body.start_date, request.body.end_date, request.body.user_id])
+            ads = result.rows[0]
 
 
             DBConnection.release()

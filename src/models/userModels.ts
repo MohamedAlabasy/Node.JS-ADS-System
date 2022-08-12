@@ -68,9 +68,10 @@ export class UserModels {
                 throw new Error(`invalid password`)
             } else {
                 // to add token to router
-                user.token = 'Bearer ' + jwt.sign({ id: user._id, email: user.email }, process.env.ACCESS_TOKEN_SECRET as string, {
+                user.token = 'Bearer ' + jwt.sign({ id: user.id, email: user.email, is_verification: user.is_verification, }, process.env.ACCESS_TOKEN_SECRET as string, {
                     expiresIn: 86400 //for 24 hour
                 });
+
 
                 sqlQuery = 'UPDATE users SET token = ($1) WHERE id=($2)'
                 await DBConnection.query(sqlQuery, [user.token, user.id]);
