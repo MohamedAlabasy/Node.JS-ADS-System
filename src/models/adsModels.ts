@@ -119,10 +119,19 @@ export class AdsModels {
 
             if (Object.keys(request.body).length > 0) {
                 let condition = '';
+                let operator = '=';
 
+                // search mechanism
                 for (let index = 0; index < Object.keys(request.body).length; index++) {
-                    condition += `${index == 0 ? '' : 'and'} ${Object.keys(request.body)[index]}=($${index + 1}) `
+                    operator = '=';
+                    if (Object.keys(request.body)[index] == 'start_date') {
+                        operator = '>=';
+                    } else if (Object.keys(request.body)[index] == 'end_date') {
+                        operator = '<=';
+                    }
+                    condition += `${index == 0 ? '' : 'and'} ${Object.keys(request.body)[index]}${operator}($${index + 1}) `
                 }
+                console.log(condition);
 
                 sqlQuery = `SELECT * FROM ads WHERE ${condition}`
                 result = await DBConnection.query(sqlQuery, Object.values(request.body))
@@ -132,7 +141,7 @@ export class AdsModels {
             }
 
             const ads = result.rows;
-            
+
             if (!ads) {
                 throw new Error('No ADS to show')
             } else {
