@@ -12,21 +12,11 @@
 				{
 					"name": "login",
 					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJhQGFhLmNvbSIsInR5cGUiOiJzdHVkZW50IiwiaWF0IjoxNjU2MTk1MjE2LCJleHAiOjE2NTYyODE2MTZ9.6oTIARzdc7TggMpY2EKjGprmVXvy2ikpcW1jARt0BIs",
-									"type": "string"
-								}
-							]
-						},
 						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n\"email\":\"eng.mohamed.alabasy@gmail.com\",\r\n\"password\":\"123456789+Aa\"\r\n}",
+							"raw": "{\r\n    \"email\":\"eng.mohamed.alabasy@gmail.com\",\r\n    \"password\":\"123456789+Aa\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -58,7 +48,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n\"first_name\":\"Mohamed\",\r\n\"last_name\":\"Alabasy\",\r\n\"email\":\"eng.mohamed.alabasy@gmail.com\",\r\n\"password\":\"123456789+Aa\"\r\n}",
+							"raw": "{\r\n    \"first_name\":\"Mohamed\",\r\n    \"last_name\":\"Alabasy\",\r\n    \"email\":\"eng.mohamed.alabasy@gmail.com\",\r\n    \"password\":\"123456789+Aa\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -90,31 +80,9 @@
 			"item": [
 				{
 					"name": "logout",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
 					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJhQGFhLmNvbSIsInR5cGUiOiJzdHVkZW50IiwiaWF0IjoxNjU2MTk1MjE2LCJleHAiOjE2NTYyODE2MTZ9.6oTIARzdc7TggMpY2EKjGprmVXvy2ikpcW1jARt0BIs",
-									"type": "string"
-								}
-							]
-						},
 						"method": "GET",
 						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
 						"url": {
 							"raw": "http://127.0.0.1:8080/user/logout/1",
 							"protocol": "http",
@@ -142,21 +110,11 @@
 				{
 					"name": "activate user email",
 					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJhQGFhLmNvbSIsInR5cGUiOiJzdHVkZW50IiwiaWF0IjoxNjU2MTk1MjE2LCJleHAiOjE2NTYyODE2MTZ9.6oTIARzdc7TggMpY2EKjGprmVXvy2ikpcW1jARt0BIs",
-									"type": "string"
-								}
-							]
-						},
 						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"code\":440721,\r\n  \"user\":1\r\n}",
+							"raw": "{\r\n    \"code\":440721,\r\n    \"user\":1\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -189,16 +147,6 @@
 				{
 					"name": "send code to user",
 					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJhQGFhLmNvbSIsInR5cGUiOiJzdHVkZW50IiwiaWF0IjoxNjU2MTk1MjE2LCJleHAiOjE2NTYyODE2MTZ9.6oTIARzdc7TggMpY2EKjGprmVXvy2ikpcW1jARt0BIs",
-									"type": "string"
-								}
-							]
-						},
 						"method": "POST",
 						"header": [],
 						"body": {
@@ -231,16 +179,6 @@
 				{
 					"name": "reset password",
 					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJhQGFhLmNvbSIsInR5cGUiOiJzdHVkZW50IiwiaWF0IjoxNjU2MTk1MjE2LCJleHAiOjE2NTYyODE2MTZ9.6oTIARzdc7TggMpY2EKjGprmVXvy2ikpcW1jARt0BIs",
-									"type": "string"
-								}
-							]
-						},
 						"method": "POST",
 						"header": [],
 						"body": {
@@ -277,31 +215,9 @@
 			"item": [
 				{
 					"name": "get user by id",
-					"protocolProfileBehavior": {
-						"disableBodyPruning": true
-					},
 					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJhQGFhLmNvbSIsInR5cGUiOiJzdHVkZW50IiwiaWF0IjoxNjU2MTk1MjE2LCJleHAiOjE2NTYyODE2MTZ9.6oTIARzdc7TggMpY2EKjGprmVXvy2ikpcW1jARt0BIs",
-									"type": "string"
-								}
-							]
-						},
 						"method": "GET",
 						"header": [],
-						"body": {
-							"mode": "raw",
-							"raw": "{\r\n\"_id\":0\r\n}",
-							"options": {
-								"raw": {
-									"language": "json"
-								}
-							}
-						},
 						"url": {
 							"raw": "http://127.0.0.1:8080/user/show/1",
 							"protocol": "http",
@@ -329,16 +245,6 @@
 				{
 					"name": "create new ADS",
 					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJhQGFhLmNvbSIsInR5cGUiOiJzdHVkZW50IiwiaWF0IjoxNjU2MTk1MjE2LCJleHAiOjE2NTYyODE2MTZ9.6oTIARzdc7TggMpY2EKjGprmVXvy2ikpcW1jARt0BIs",
-									"type": "string"
-								}
-							]
-						},
 						"method": "POST",
 						"header": [],
 						"body": {
@@ -347,7 +253,7 @@
 								{
 									"key": "ads",
 									"type": "file",
-									"src": "/C:/Users/Mh.El3basy/Desktop/tttt/Udacity Nanodegree Graduation Certificate.png"
+									"src": "/C:/Users/Mh.El3basy/Desktop/tttt/mohamed alsaeed alabasy.mp4"
 								},
 								{
 									"key": "device_type",
@@ -366,7 +272,7 @@
 								},
 								{
 									"key": "end_date",
-									"value": "1997-12-08",
+									"value": "2052-12-08",
 									"type": "text"
 								},
 								{
@@ -396,16 +302,6 @@
 				{
 					"name": "get ADS by id",
 					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJhQGFhLmNvbSIsInR5cGUiOiJzdHVkZW50IiwiaWF0IjoxNjU2MTk1MjE2LCJleHAiOjE2NTYyODE2MTZ9.6oTIARzdc7TggMpY2EKjGprmVXvy2ikpcW1jARt0BIs",
-									"type": "string"
-								}
-							]
-						},
 						"method": "GET",
 						"header": [],
 						"url": {
@@ -429,20 +325,10 @@
 				{
 					"name": "get all ADS",
 					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJhQGFhLmNvbSIsInR5cGUiOiJzdHVkZW50IiwiaWF0IjoxNjU2MTk1MjE2LCJleHAiOjE2NTYyODE2MTZ9.6oTIARzdc7TggMpY2EKjGprmVXvy2ikpcW1jARt0BIs",
-									"type": "string"
-								}
-							]
-						},
 						"method": "GET",
 						"header": [],
 						"url": {
-							"raw": "http://127.0.0.1:8080/ads/1",
+							"raw": "http://127.0.0.1:8080/ads",
 							"protocol": "http",
 							"host": [
 								"127",
@@ -452,8 +338,7 @@
 							],
 							"port": "8080",
 							"path": [
-								"ads",
-								"1"
+								"ads"
 							]
 						}
 					},
@@ -462,21 +347,11 @@
 				{
 					"name": "ADS Search",
 					"request": {
-						"auth": {
-							"type": "bearer",
-							"bearer": [
-								{
-									"key": "token",
-									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJhQGFhLmNvbSIsInR5cGUiOiJzdHVkZW50IiwiaWF0IjoxNjU2MTk1MjE2LCJleHAiOjE2NTYyODE2MTZ9.6oTIARzdc7TggMpY2EKjGprmVXvy2ikpcW1jARt0BIs",
-									"type": "string"
-								}
-							]
-						},
 						"method": "POST",
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n\"device_type\":\"device_type\",\r\n\"ads_place\":\"ads_place\",\r\n\"start_date\":\"start_date\",\r\n\"end_date\":\"end_date\"\r\n}",
+							"raw": "{\r\n    \"device_type\":\"mobile\",\r\n    \"ads_place\":\"popup\",\r\n    \"start_date\":\"1800-10-10\",\r\n    \"end_date\":\"2080-07-10\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
