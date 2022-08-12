@@ -26,7 +26,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n\"email\":\"eng.mohamed.alabasy@gmail.com\",\r\n\"password\":\"12346789+Aa\"\r\n}",
+							"raw": "{\r\n\"email\":\"eng.mohamed.alabasy@gmail.com\",\r\n\"password\":\"123456789+Aa\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -58,7 +58,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n\"first_name\":\"Mohamed\",\r\n\"last_name\":\"Alabasy\",\r\n\"email\":\"aeng.mohamed.alabasy@gmail.com\",\r\n\"password\":\"12346789+Aa\"\r\n}",
+							"raw": "{\r\n\"first_name\":\"Mohamed\",\r\n\"last_name\":\"Alabasy\",\r\n\"email\":\"eng.mohamed.alabasy@gmail.com\",\r\n\"password\":\"123456789+Aa\"\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -156,7 +156,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n  \"code\":210305,\r\n  \"user\":30\r\n}",
+							"raw": "{\r\n  \"code\":440721,\r\n  \"user\":1\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -245,7 +245,7 @@
 						"header": [],
 						"body": {
 							"mode": "raw",
-							"raw": "{\r\n    \"code\":154786,\r\n    \"password\":\"asda\",\r\n    \"user\":1\r\n}",
+							"raw": "{\r\n    \"code\":316558,\r\n    \"password\":\"987654321+Aa\",\r\n    \"user\":1\r\n}",
 							"options": {
 								"raw": {
 									"language": "json"
@@ -316,6 +316,186 @@
 								"user",
 								"show",
 								"1"
+							]
+						}
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "ADS",
+			"item": [
+				{
+					"name": "create new ADS",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJhQGFhLmNvbSIsInR5cGUiOiJzdHVkZW50IiwiaWF0IjoxNjU2MTk1MjE2LCJleHAiOjE2NTYyODE2MTZ9.6oTIARzdc7TggMpY2EKjGprmVXvy2ikpcW1jARt0BIs",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "formdata",
+							"formdata": [
+								{
+									"key": "ads",
+									"type": "file",
+									"src": "/C:/Users/Mh.El3basy/Desktop/tttt/Udacity Nanodegree Graduation Certificate.png"
+								},
+								{
+									"key": "device_type",
+									"value": "mobile",
+									"type": "text"
+								},
+								{
+									"key": "ads_place",
+									"value": "popup",
+									"type": "text"
+								},
+								{
+									"key": "start_date",
+									"value": "1997-12-07",
+									"type": "text"
+								},
+								{
+									"key": "end_date",
+									"value": "1997-12-08",
+									"type": "text"
+								},
+								{
+									"key": "user_id",
+									"value": "1",
+									"type": "text"
+								}
+							]
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8080/ads",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8080",
+							"path": [
+								"ads"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get ADS by id",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJhQGFhLmNvbSIsInR5cGUiOiJzdHVkZW50IiwiaWF0IjoxNjU2MTk1MjE2LCJleHAiOjE2NTYyODE2MTZ9.6oTIARzdc7TggMpY2EKjGprmVXvy2ikpcW1jARt0BIs",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8080/ads/1",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8080",
+							"path": [
+								"ads",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "get all ADS",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJhQGFhLmNvbSIsInR5cGUiOiJzdHVkZW50IiwiaWF0IjoxNjU2MTk1MjE2LCJleHAiOjE2NTYyODE2MTZ9.6oTIARzdc7TggMpY2EKjGprmVXvy2ikpcW1jARt0BIs",
+									"type": "string"
+								}
+							]
+						},
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "http://127.0.0.1:8080/ads/1",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8080",
+							"path": [
+								"ads",
+								"1"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "ADS Search",
+					"request": {
+						"auth": {
+							"type": "bearer",
+							"bearer": [
+								{
+									"key": "token",
+									"value": "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6MSwiZW1haWwiOiJhQGFhLmNvbSIsInR5cGUiOiJzdHVkZW50IiwiaWF0IjoxNjU2MTk1MjE2LCJleHAiOjE2NTYyODE2MTZ9.6oTIARzdc7TggMpY2EKjGprmVXvy2ikpcW1jARt0BIs",
+									"type": "string"
+								}
+							]
+						},
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\r\n\"device_type\":\"device_type\",\r\n\"ads_place\":\"ads_place\",\r\n\"start_date\":\"start_date\",\r\n\"end_date\":\"end_date\"\r\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "http://127.0.0.1:8080/ads/search",
+							"protocol": "http",
+							"host": [
+								"127",
+								"0",
+								"0",
+								"1"
+							],
+							"port": "8080",
+							"path": [
+								"ads",
+								"search"
 							]
 						}
 					},
