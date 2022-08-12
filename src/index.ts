@@ -41,7 +41,6 @@ const fileFilter = (request: express.Request, file: any, callback: any) => {
         file.mimetype == 'image/jpg' ||
         file.mimetype == 'image/jpeg' ||
         // video extensions
-        file.mimetype == 'video/gif'||
         file.mimetype == 'video/mkv'||
         file.mimetype == 'video/mp4') {
         callback(null, true);
@@ -49,7 +48,7 @@ const fileFilter = (request: express.Request, file: any, callback: any) => {
         callback(null, false);
     }
 }
-// to allowed front end to access my image
+//to allowed front end to access my image
 app.use('/images', express.static(path.join(__dirname, 'images')));
 
 app.use(multer({ storage, fileFilter }).single('ads'));

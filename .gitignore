@@ -134,6 +134,10 @@ dist
 *.jpg
 *.jpeg
 
+# images
+*.mp4
+
+
 # except avatar image
 !avatar.png
 
