@@ -18,7 +18,10 @@ git clone https://github.com/MohamedAlabasy/Node.JS-ADS-System.git
 ```
 npm i
 ```
-`Step 3` : open pgadmin then create a data base called `ads_system`
+`Step 3` : Open pgadmin then create a database called `ads_system` , then to run migrations :
+```
+db-migrate up
+```
 
 
 <h3 align="center">To help you understand the project</h3>
