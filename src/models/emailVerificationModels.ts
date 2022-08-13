@@ -26,13 +26,12 @@ export class EmailVerificationModels {
             const result = await DBConnection.query(sqlQuery, [request.body.user])
             const date = result.rows[0]
 
-            console.log(date);
-
             if (!date) {
                 throw new Error(`Not send code to user with id = ${request.body.user}`)
             } else if (request.body.code != date.code) {
                 throw new Error('invalid code');
             } else if (new Date() >= date.expire_at) {
+                // If the code exceeds a certain time and it has not been used in this application for 24 hours
                 throw new Error('This code has expired');
             } else {
                 sqlQuery = 'UPDATE users SET is_verification = true WHERE id=($1)'

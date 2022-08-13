@@ -63,6 +63,7 @@ export class ResetPasswordModels {
             } else if (request.body.code != date.code) {
                 throw new Error('invalid code');
             } else if (new Date() >= date.expire_at) {
+                // If the code exceeds a certain time and it has not been used in this application for 24 hours
                 throw new Error('This code has expired');
             } else {
                 const hashPassword = bcrypt.hashSync(request.body.password, 10);

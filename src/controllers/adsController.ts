@@ -3,7 +3,6 @@ import { Request, Response, NextFunction } from 'express';
 import { AdsModels } from '../models/adsModels'
 
 const ads = new AdsModels()
-
 // #=======================================================================================#
 // #			                            create                                         #
 // #=======================================================================================#
@@ -47,6 +46,7 @@ export const getAdsByID = async (request: Request, response: Response, next: Nex
                     data: {
                         id: adsData.id,
                         ads: adsData.ads,
+                        // not stored in DB just for help who work in the front-end 
                         ads_type: adsData.ads.split('.').pop() === ('png' || 'png' || 'jpeg') ? 'image' : 'video',
                         views_number: adsData.views,
                         device_type: adsData.device_type,
@@ -78,6 +78,7 @@ export const getAllADS = async (request: Request, response: Response, next: Next
                     } : {
                         id: ads.id,
                         ads: ads.ads,
+                        // not stored in DB just for help who work in the front-end 
                         ads_type: ads.ads.split('.').pop() === ('png' || 'jpg' || 'jpeg') ? 'image' : 'video',
                         views_number: ads.views,
                         device_type: ads.device_type,
@@ -109,6 +110,7 @@ export const adsSearch = async (request: Request, response: Response, next: Next
                     } : {
                         id: ads.id,
                         ads: ads.ads,
+                        // not stored in DB just for help who work in the front-end 
                         ads_type: ads.ads.split('.').pop() === ('png' || 'jpg' || 'jpeg') ? 'image' : 'video',
                         views_number: ads.views,
                         device_type: ads.device_type,

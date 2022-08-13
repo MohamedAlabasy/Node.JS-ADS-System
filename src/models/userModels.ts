@@ -33,6 +33,7 @@ export class UserModels {
 
             // use create and wanna send email code
             if (user) {
+                // auto generate code = 6 numbers
                 const registerCode = Math.floor(100000 + Math.random() * 900000);
                 const expireCodeTime = 3600000;
                 sqlQuery = 'INSERT INTO email_verification (code,created_at, expire_at, user_id) VALUES($1, $2, $3, $4) RETURNING *'
@@ -71,11 +72,10 @@ export class UserModels {
                 user.token = 'Bearer ' + jwt.sign({ id: user.id, email: user.email, is_verification: user.is_verification, }, process.env.ACCESS_TOKEN_SECRET as string, {
                     expiresIn: 86400 //for 24 hour
                 });
-
-
                 sqlQuery = 'UPDATE users SET token = ($1) WHERE id=($2)'
                 await DBConnection.query(sqlQuery, [user.token, user.id]);
             }
+
             DBConnection.release();
             return user;
         } catch (error) {
@@ -112,26 +112,19 @@ export class UserModels {
         try {
             let sqlQuery = 'SELECT * FROM users WHERE id=($1)'
             const DBConnection = await Client.connect()
-            let result = await DBConnection.query(sqlQuery, [request.params.id])
-            let user = result.rows[0]
+            const result = await DBConnection.query(sqlQuery, [request.params.id])
+            const user = result.rows[0]
+
             if (!user) {
                 throw new Error(`No user with this id = ${request.params.id}`)
             } else {
                 sqlQuery = 'UPDATE users SET token = null WHERE id=($1)'
                 await DBConnection.query(sqlQuery, [request.params.id]);
             }
+
             DBConnection.release();
         } catch (error) {
             throw new Error(error + '');
         }
     }
-}
-// #=======================================================================================#
-// #			                          general fun                                      #
-// #=======================================================================================#
-function code(): number {
-    return Math.floor(100000 + Math.random() * 900000);
-}
-function hashPassword(password: string): string {
-    return bcrypt.hashSync(password, 10);
 }
