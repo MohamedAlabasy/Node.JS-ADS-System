@@ -30,8 +30,8 @@ export class AdsModels {
         try {
             const start_date = new Date(request.body.start_date)
             const end_date = new Date(request.body.end_date)
-
-            if (request.file?.filename.split('.').pop() !== ('mp4' || 'png' || 'jpg' || 'jpeg' || 'mkv' || 'mp4')) {
+            
+            if (!['mp4', 'png', 'jpg', 'jpeg', 'mkv', 'mp4'].includes(request.file?.filename.split('.').pop() + '')) {
                 throw new Error('ads extensions must be one of png or jpg or jpeg for images and one of mkv or mp4 for video')
             }
             if (end_date <= start_date) {
@@ -125,7 +125,7 @@ export class AdsModels {
     // #=======================================================================================#
     // #			                           ADS search                                      #
     // #=======================================================================================#
-    async adsSearch(request: Request): Promise<any[]>{
+    async adsSearch(request: Request): Promise<any[]> {
         validateRequest(request);
         try {
             let result;
