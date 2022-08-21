@@ -1,14 +1,14 @@
 {
     "dev": {
         "driver": "pg",
-        "host": "database-1.cjc6nbp3pk3z.us-east-1.rds.amazonaws.com",
+        "host": "localhost",
         "database": "ads_system",
         "user": "postgres",
         "password": "postgres"
     },
     "test": {
         "driver": "pg",
-        "host": "database-1.cjc6nbp3pk3z.us-east-1.rds.amazonaws.com",
+        "host": "localhost",
         "database": "ads_system_test",
         "user": "postgres",
         "password": "postgres"
